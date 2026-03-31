@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 10px;
+  background: linear-gradient(to top right, #667eea 0%, #764ba2 100%);
+  display: flex; /* 1. Kích hoạt Flexbox */
+  justify-content: center; /* 2. Căn giữa theo chiều ngang */
+  align-items: center; /* 3. Căn giữa theo chiều dọc */
+}
+
+.todo_list_box {
+  width: 100%;
+  max-width: 400px; /* Hộp sẽ rộng tối đa 400px */
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+h1 img {
+  width: 45px;
+}
+
+.row {
+  display: flex;
+  background: #edeef0; /* Màu nền nhẹ cho cả thanh nhập liệu */
+  border-radius: 30px; /* Bo tròn cả thanh cho hiện đại */
+  padding-left: 20px;
+  margin-bottom: 25px;
+}
+
+.row input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 12px 15px; /* Tăng padding cho dễ chạm tay (touch friendly) */
+  font-size: 14px; /* Giảm font một chút trên mobile */
+}
+
+.row button {
+  border: none;
+  outline: none;
+  padding: 12px 25px; /* Giảm bớt padding ngang của nút */
+  background: #ff5945;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 30px; /* Nút cũng được bo tròn toàn bộ */
+  white-space: nowrap; /* Quan trọng: Không cho chữ "Thêm" bị xuống dòng */
+}
+
+ul li {
+  list-style: none;
+  padding: 10px;
+  display: flex; /* Đưa chữ và nút Xóa ra 2 đầu */
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.delete-btn {
+  background: #ebebeb;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #ff5945;
+  color: white;
+}
+/* 1. Định nghĩa kích thước và vị trí cho icon trạng thái */
+.status-icon {
+  width: 24px; /* Chiều rộng của icon - tùy chỉnh theo hình của bạn */
+  height: 24px; /* Chiều cao của icon */
+  margin-right: 15px; /* Khoảng cách với nội dung chữ */
+
+  /* 2. Thiết lập hình ảnh unchecked mặc định */
+  background-image: url("assets/unchecked.png"); /* Đường dẫn tới hình chưa check */
+  background-size: contain; /* Đảm bảo hình nằm gọn trong khung */
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer; /* Cho biết có thể bấm được */
+}
+
+/* 3. Phép màu ở đây: Khi li cha có class completed, đổi hình icon con */
+ul li.completed .status-icon {
+  background-image: url("assets/checked.png"); /* Đường dẫn tới hình đã check */
+}
+
+/* Cập nhật CSS gạch ngang chỉ cho phần chữ */
+ul li.completed .task-content {
+  text-decoration: line-through;
+  color: #888;
+  opacity: 0.6;
+}
+ul li span.task-content {
+  flex: 1;
+  text-align: left; /* Đảm bảo chữ luôn nằm bên trái */
+  margin-left: 10px; /* Khoảng cách giữa icon và chữ */
+  overflow: hidden; /* Giấu phần chữ thừa */
+  text-overflow: ellipsis; /* Hiện dấu ... nếu tên task quá dài */
+  white-space: nowrap; /* Không cho chữ xuống dòng làm vỡ khung */
+}
